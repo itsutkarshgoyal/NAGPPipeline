@@ -2,8 +2,7 @@ pipeline {
    agent any
    
     environment {
-	   scannerHome = tool name: 'sonar_scanner_dotnet'
-	   dockerh = tool name: 'docker'
+	   scannerHome = tool name: 'SonarQubeScanner'
 	   registry = 'utkarshgoyal/samplepipeline'
 	   properties = null
 	   docker_port = null
