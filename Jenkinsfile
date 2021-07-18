@@ -59,7 +59,7 @@ pipeline {
 			 echo "Code Build"
 			 bat 'dotnet build -c Release -o "SampleWebApp/app/build"'
 			 bat 'dotnet test ... --collect "DotnetCodeCoverage"'
-			 bat 'CodeCoverage.exe analyze /output: "SampleApplicationTest\DotnetCoverage.coveragexml"'
+			 bat 'CodeCoverage.exe analyze /output: "DotnetCoverage.coveragexml"'
 		 }
 	   }
 	   
