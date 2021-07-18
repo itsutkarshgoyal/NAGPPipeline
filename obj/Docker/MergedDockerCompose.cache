@@ -1,0 +1,11 @@
+services:
+  samplewebapp:
+    build:
+      context: C:\Users\utkarshgoyal\Documents\pipelines
+      dockerfile: SampleWebApp/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: samplewebapp
+    ports:
+    - target: 80
+version: '3.4'

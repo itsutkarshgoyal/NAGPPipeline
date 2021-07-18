@@ -343,7 +343,8 @@
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {
         "type": "package",
         "build": {
-          "build/_._": {}
+          "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props": {},
+          "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets": {}
         }
       },
       "Microsoft.Win32.Primitives/4.3.0": {
@@ -6242,6 +6243,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.NET.Test.Sdk >= 16.7.1",
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
       "Moq >= 4.16.1",
       "SampleWebApp >= 1.0.0",
       "coverlet.collector >= 1.3.0",
@@ -6298,6 +6300,10 @@
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.7.1, )"
+          },
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+            "target": "Package",
+            "version": "[1.10.9, )"
           },
           "Moq": {
             "target": "Package",
