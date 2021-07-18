@@ -58,6 +58,8 @@ pipeline {
 			 // build the project and all its dependies
 			 echo "Code Build"
 			 bat 'dotnet build -c Release -o "SampleWebApp/app/build"'
+			 bat 'dotnet test ... --collect "DotnetCodeCoverage"'
+			 bat 'CodeCoverage.exe analyze /output: "%CD%\DotnetCoverage.coveragexml"'
 		 }
 	   }
 	   
@@ -70,7 +72,7 @@ pipeline {
 		  }
 	   }
 	   
-	   stage('Docker Image'){
+	   /*stage('Docker Image'){
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
@@ -95,13 +97,7 @@ pipeline {
 		   echo "Docker Deployment"
 		    bat "docker run --name SampleWebApp -d -p 7100:80 ${registry}:${BUILD_NUMBER}"
 		 }
-	   }
+	   }*/
 	}
-	
-		post {
-		   always {
-			 echo "Test Report Generation Step"
-			   xunit([MSTEST(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\ProductManagementApiOutput')])
-		   }
-		}		
+		
     }
