@@ -3,6 +3,7 @@ pipeline {
    
     environment {
 	   scannerHome = tool name: 'sonar_scanner_dotnet'
+	   dockerh = tool name: 'docker'
 	   registry = 'utkarshgoyal/samplepipeline'
 	   properties = null
 	   docker_port = null
@@ -74,7 +75,7 @@ pipeline {
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
-		  bat "docker build =t i_${username}_master --no-cache -f Dockerfile ."
+		  bat "docker build = t i_${username}_master --no-cache -f Dockerfile ."
 		}
 	   }
 	   
