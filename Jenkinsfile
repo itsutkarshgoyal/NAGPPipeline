@@ -37,7 +37,7 @@ pipeline {
 	     steps {
 		  // echo "Running build ${JOB_NAME} # ${BUILD_NUMBER} for ${properties['user.employeeid']} with docker as ${docker_port}"
 		   echo "Nuget Restore Step"
-		   bat "dotnet restore"
+		   bat "dotnet restore 'SampleWebApp/SampleWebApp.csproj'"
 		 }
 	   }
  	   stage('Start sonarqube analysis'){
