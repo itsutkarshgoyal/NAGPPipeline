@@ -75,7 +75,7 @@ pipeline {
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
-		  bat "${dockerh} build -t i_${username}_master --no-cache -f Dockerfile ."
+		  bat "docker build -t i_${username}_master --no-cache -f Dockerfile ."
 		}
 	   }
 	   
