@@ -98,10 +98,10 @@ pipeline {
 	   }
 	}
 	
-	//post {
-	  // always {
-	    // echo "Test Report Generation Step"
-		//   xunit([MSTEST(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\ProductManagementApiOutput')])
-	   //}
-	//}		
+		post {
+		   always {
+			 echo "Test Report Generation Step"
+			   xunit([MSTEST(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\ProductManagementApiOutput')])
+		   }
+		}		
     }
