@@ -70,7 +70,7 @@ pipeline {
 		  }
 	   }
 	   
-	   stage('Docker Image'){
+	   /*stage('Docker Image'){
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
@@ -95,7 +95,7 @@ pipeline {
 		   echo "Docker Deployment"
 		    bat "docker run --name SampleWebApp -d -p 7100:80 ${registry}:${BUILD_NUMBER}"
 		 }
-	   }
+	   }*/
 	}
 		
     }
