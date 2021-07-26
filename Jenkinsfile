@@ -109,7 +109,7 @@ pipeline {
 	post {
 	   always {
 	     echo "Test Report Generation Step"
-		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\NAGPAPITestOutput.xml',skipNoTestFiles:true,stopProcessingIfError:true)])
+		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\NAGPAPITestOutput.trx',skipNoTestFiles:true,stopProcessingIfError:true)])
 	   }
 	   
 	   }
