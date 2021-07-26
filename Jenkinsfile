@@ -20,7 +20,7 @@ pipeline {
 
 	       buildDiscarder(logRotator(
 		     // number of build logs to keep
-			 numToKeepStr: '3',
+			 numToKeepStr: '80',
 			 // history to keep in days
 			 daysToKeepStr: '15'
 		   ))		   	  
@@ -70,7 +70,7 @@ pipeline {
 		  }
 	   }
 	   
-	   /*stage('Docker Image'){
+	   stage('Docker Image'){
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
@@ -78,7 +78,7 @@ pipeline {
 		}
 	   }
 	   
-	   stage('Move Image to Docker Hub')
+	   /*stage('Move Image to Docker Hub')
 	   {
 	     steps {
 		     echo "Move Image to Docker Hub"
