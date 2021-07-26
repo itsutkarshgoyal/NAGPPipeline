@@ -61,6 +61,14 @@ pipeline {
 		 }
 	   }
 	   
+	   stage('Test Case Execution') {
+            steps {
+                echo 'start Testing'
+                bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj -l:trx;LogFileName=NAGPAPITestOutput.trx"
+                // bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj /p:CollectCoverage=true \\ /p:CoverletOutputFormat=opencover"// -l:trx;LogFileName=NAGPAPITestOutput.xml"
+            }
+        }
+	   
 	   stage('Stop sonarqube analysis'){
 	      steps {
 		     echo "Stop analysis"
@@ -70,7 +78,7 @@ pipeline {
 		  }
 	   }
 	   
-	   stage('Docker Image'){
+	   /*stage('Docker Image'){
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
@@ -78,7 +86,7 @@ pipeline {
 		}
 	   }
 	   
-	   /*stage('Move Image to Docker Hub')
+	    stage('Move Image to Docker Hub')
 	   {
 	     steps {
 		     echo "Move Image to Docker Hub"
@@ -98,12 +106,12 @@ pipeline {
 	   }*/
 	}
 	
-	/*post {
+	post {
 	   always {
 	     echo "Test Report Generation Step"
-		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\SampleApplicationTestOutput.xml',skipNoTestFiles:true,stopProcessingIfError:true)])
+		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\NAGPAPITestOutput.xml',skipNoTestFiles:true,stopProcessingIfError:true)])
 	   }
 	   
-	   }*/
+	   }
 		
     }
