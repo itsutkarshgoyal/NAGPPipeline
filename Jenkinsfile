@@ -64,9 +64,9 @@ pipeline {
 	   stage('Test Case Execution') {
             steps {
                 echo 'start Testing'
-                bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj --logger:trx;/p:CollectCoverage=true; LogFileName=NAGPAPITestOutput.xml"
+                //bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj --logger:trx;/p:CollectCoverage=true; LogFileName=NAGPAPITestOutput.xml"
 			    //bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj --logger:trx; LogFileName=NAGPAPITestOutput.xml\" /p:CollectCoverage=true/p:CoverletOutputFormat=opencover /p:CoverletOutput=\"TestResults\\opencover.xml\""
-                // bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj /p:CollectCoverage=true \\ /p:CoverletOutputFormat=opencover"// -l:xml;LogFileName=NAGPAPITestOutput.xml"
+                 bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj /p:CollectCoverage=true \\ /p:CoverletOutputFormat=opencover"// -l:xml;LogFileName=NAGPAPITestOutput.xml"
             }
         }
 	   
