@@ -103,7 +103,7 @@ pipeline {
 		   echo "Docker Deployment"
 		    bat "docker run --name SampleWebApp -d -p 7100:80 ${registry}:${BUILD_NUMBER}"
 		 }
-	   }*/
+	   }
 	}
 	
 	post {
@@ -112,6 +112,6 @@ pipeline {
 		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\NAGPAPITestOutput.xml',skipNoTestFiles:true,stopProcessingIfError:true)])
 	   }
 	   
-	   }
+	   }*/
 		
     }
