@@ -64,8 +64,8 @@ pipeline {
 	   stage('Test Case Execution') {
             steps {
                 echo 'start Testing'
-                bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj -l:trx;LogFileName=NAGPAPITestOutput.trx"
-                // bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj /p:CollectCoverage=true \\ /p:CoverletOutputFormat=opencover"// -l:trx;LogFileName=NAGPAPITestOutput.xml"
+                bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj -l:trx;LogFileName=NAGPAPITestOutput.xml"
+                // bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj /p:CollectCoverage=true \\ /p:CoverletOutputFormat=opencover"// -l:xml;LogFileName=NAGPAPITestOutput.xml"
             }
         }
 	   
@@ -109,7 +109,7 @@ pipeline {
 	post {
 	   always {
 	     echo "Test Report Generation Step"
-		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\NAGPAPITestOutput.trx',skipNoTestFiles:true,stopProcessingIfError:true)])
+		   xunit([MSTest(deleteOutputFiles: true, failIfNotNew:true, pattern: 'SampleApplicationTest\\TestResults\\NAGPAPITestOutput.xml',skipNoTestFiles:true,stopProcessingIfError:true)])
 	   }
 	   
 	   }
