@@ -45,7 +45,7 @@ pipeline {
 		     echo "Start sonarqube analysis step"
 			 withSonarQubeEnv('Test_Sonar'){
 			    //bat "${scannerHome}/SonarScanner.MSBuild.exe begin /k:Sample /n:SampleWebApp /v:1.0"
-				bat "${scannerHome}/SonarScanner.MSBuild.exe begin /k:Sample /n:SampleWebApp /v:1.0 /d:sonar.cs.vscoveragexml.reportsPaths=%CD%\VisualStudio.coveragexml"
+				bat "${scannerHome}/SonarScanner.MSBuild.exe begin /k:Sample /n:SampleWebApp /v:1.0 /d:sonar.cs.opencover.reportsPaths=\"**/coverage.opencover.xml\"
 				
 			 }
 		 }
@@ -66,8 +66,6 @@ pipeline {
 	   stage('Test Case Execution') {
             steps {
                 echo 'start Testing'
-                //bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj --logger:trx;/p:CollectCoverage=true; LogFileName=NAGPAPITestOutput.xml"
-			    //bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj --logger:trx; LogFileName=NAGPAPITestOutput.xml\" /p:CollectCoverage=true/p:CoverletOutputFormat=opencover /p:CoverletOutput=\"TestResults\\opencover.xml\""
                  bat "dotnet test SampleApplicationTest\\SampleApplicationTest.csproj /p:CollectCoverage=true  /p:CoverletOutputFormat=opencover"// -l:xml;LogFileName=NAGPAPITestOutput.xml"
             }
         }
