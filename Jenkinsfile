@@ -125,7 +125,7 @@ pipeline {
 		    bat "docker run --name SampleWebApp -d -p 7100:80 ${registry}:${BUILD_NUMBER}"
 		 }
 	   }*/
-	}}
+	}
 	
 	/*post {
 	   always {
