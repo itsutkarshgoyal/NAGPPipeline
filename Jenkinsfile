@@ -45,9 +45,7 @@ pipeline {
 		     echo "Start sonarqube analysis step"
 			 withSonarQubeEnv('Test_Sonar'){
 			    //bat "${scannerHome}/SonarScanner.MSBuild.exe begin /k:Sample /n:SampleWebApp /v:1.0"
-				bat "${scannerHome}/SonarScanner.MSBuild.exe begin /k:Sample /d:sonar.host.url=http://localhost:9000 \
-				/d:sonar.cs.opencover.reportsPaths=\SampleApplicationTest/coverage.opencover.xml \
-/d:sonar.coverage.exclusions=”**Test*.cs"
+				bat "${scannerHome}/SonarScanner.MSBuild.exe begin /k:Sample /n:SampleWebApp /v:1.0 /d:sonar.cs.vscoveragexml.reportsPaths=%CD%\VisualStudio.coveragexml"
 				
 			 }
 		 }
