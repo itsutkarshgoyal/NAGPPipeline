@@ -111,10 +111,10 @@ pipeline {
 	   {
 	     steps {
 		     echo "Move Image to Docker Hub"
-			 bat "docker tag i_${username}_master ${registry}:${BUILD_NUMBER}"
+			 //bat "docker tag i_${username}_master ${registry}:${BUILD_NUMBER}"
 			 
 			 withDockerRegistry([credentialsId: 'DockerHub', url:""]){
-			   bat "docker push ${registry}:${BUILD_NUMBER}"
+			   bat "docker push dockerImage"
 			 }
 		 }
 	   }
