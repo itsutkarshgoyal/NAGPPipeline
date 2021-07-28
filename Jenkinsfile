@@ -97,7 +97,7 @@ pipeline {
 		}
       }
 	  
-	  stage('Deploy Image') {
+	  /*stage('Deploy Image') {
 	    steps{
 		   script {
 		      docker.withRegistry([credentialsId: 'DockerHub', url:""]) {
@@ -105,9 +105,9 @@ pipeline {
 		       }
 		   }
         }
-      }
+      }*/
 	  
-	  /*  stage('Move Image to Docker Hub')
+	    stage('Move Image to Docker Hub')
 	   {
 	     steps {
 		     echo "Move Image to Docker Hub"
@@ -119,7 +119,7 @@ pipeline {
 		 }
 	   }
 	   
-	   stage('Docker Deployment'){
+	   /*stage('Docker Deployment'){
 	     steps{
 		   echo "Docker Deployment"
 		    bat "docker run --name SampleWebApp -d -p 7100:80 ${registry}:${BUILD_NUMBER}"
