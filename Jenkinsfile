@@ -7,6 +7,8 @@ pipeline {
 	   properties = null
 	   docker_port = null
 	   username = 'utkarshgoyal'
+	   dockerImage = ''
+	   registryCredential = 'dockerhub'
 	}
 	options {
 		  // prepend all console output generated during statges  
@@ -79,15 +81,32 @@ pipeline {
 		  }
 	   }
 	   
-	   stage('Docker Image'){
+	   /*stage('Docker Image'){
 	    steps {
 		  echo "Docker Image Step"
 		  bat 'dotnet publish -c Release'
 		  bat "docker build -t i_${username}_master --no-cache -f Dockerfile ."
 		}
-	   }
+	   }*/
 	   
-	    stage('Move Image to Docker Hub')
+	  stage('Building image') {
+      steps{
+        script {
+         dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+	  
+	  stage('Deploy Image') {
+	  steps{
+		script {
+		  docker.withRegistry( '', registryCredential ) {
+			dockerImage.push()
+		  }
+		}
+       }
+      }
+	  
+	  /*  stage('Move Image to Docker Hub')
 	   {
 	     steps {
 		     echo "Move Image to Docker Hub"
@@ -104,7 +123,7 @@ pipeline {
 		   echo "Docker Deployment"
 		    bat "docker run --name SampleWebApp -d -p 7100:80 ${registry}:${BUILD_NUMBER}"
 		 }
-	   }
+	   }*/
 	}
 	
 	post {
